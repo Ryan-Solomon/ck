@@ -16,6 +16,25 @@ export default (state, action) => {
         contacts: [...state.contacts, action.payload],
       };
 
+    case DELETE_CONTACT:
+      const updatedContacts = [
+        state.contacts.filer((contact) => contact.id !== action.payload),
+      ];
+      return {
+        ...state,
+        contacts: updatedContacts,
+      };
+    case SET_CURRENT:
+      return {
+        ...state,
+        current: action.payload,
+      };
+    case CLEAR_CURRENT:
+      return {
+        ...state,
+        current: null,
+      };
+
     default:
       return state;
   }
