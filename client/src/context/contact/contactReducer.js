@@ -41,6 +41,13 @@ export default (state, action) => {
           contact.id === action.payload.id ? action.payload : contact
         ),
       };
+    case FILTER_CONTACTS:
+      return {
+        ...state,
+        filtered: state.contacts.filter((contact) =>
+          contact.name.includes(action.payload)
+        ),
+      };
 
     case CLEAR_FILTER:
       return {
